@@ -1,11 +1,14 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return '<h1>Hello World, how are you!</h1>'
+    name = 'Brian'
+    title = 'Coding Temple Intro to Flask'
+    return render_template('index.html', name=name, title=title)
 
 @app.route('/test')
 def test():
-    return 'This is a test'
+    colors = ['blue', 'green', 'red', 'orange', 'pink', 'black']
+    return render_template('test.html', title='Test Title!', colors=colors)
