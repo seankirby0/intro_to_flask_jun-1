@@ -1,3 +1,4 @@
 .env
 __pycache__/
 jun_venv/
+app.db
