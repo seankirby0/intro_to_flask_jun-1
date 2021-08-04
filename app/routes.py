@@ -1,5 +1,5 @@
 from app import app, db
-from flask import render_template
+from flask import render_template, flash, redirect, url_for
 from app.forms import RegisterForm
 from app.models import User
 
@@ -24,6 +24,12 @@ def register():
         # Add new_user to our database
         db.session.add(new_user)
         db.session.commit()
+
+        # Once new_user is added to db, flash success message
+        flash(f'Thank you for signing up {new_user.username}!', 'danger')
+
+        # Redirect user back to home page
+        return redirect(url_for('index'))
 
         
     return render_template('register.html', title='Register for CT Blog', form=form)
