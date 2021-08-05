@@ -5,9 +5,9 @@ from app.models import User, Post
 
 @app.route('/')
 def index():
-    name = 'Brian'
     title = 'Coding Temple Intro to Flask'
-    return render_template('index.html', name=name, title=title)
+    all_posts = Post.query.all()
+    return render_template('index.html', title=title, posts=all_posts)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
